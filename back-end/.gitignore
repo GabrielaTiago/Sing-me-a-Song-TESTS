@@ -1,6 +1,0 @@
-dist
-node_modules
-.vscode
-.env*
-!.env.example
-.env.test
