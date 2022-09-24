@@ -1,20 +1,20 @@
-import { jest } from "@jest/globals";
 import { recommendationRepository } from "../../../src/repositories/recommendationRepository";
 import { recommendationService } from "../../../src/services/recommendationsService";
-import * as recomendationsFactory from "../../factory/recomendationsFactory";
+import * as recommendationsFactory from "../../factory/recommendationsFactory";
 
 beforeEach(() => {
-  jest.resetAllMocks();
   jest.clearAllMocks();
+  jest.resetAllMocks();
 });
 
 describe("Creating recomendation", () => {
   it("Should create a new recomendation with the correct data", async () => {
-    const createRecommendation = recomendationsFactory.__create();
+    const createRecommendation = recommendationsFactory.__create();
+
     jest
       .spyOn(recommendationRepository, "findByName")
       .mockResolvedValueOnce(null);
-    jest.spyOn(recommendationRepository, "create").mockResolvedValueOnce(null);
+    jest.spyOn(recommendationRepository, "create").mockResolvedValueOnce();
 
     await recommendationService.insert(createRecommendation);
 
@@ -23,7 +23,7 @@ describe("Creating recomendation", () => {
   });
 
   it("Shouldn't create a new recomendation if it already exists", async () => {
-    const recomendationFound = recomendationsFactory.__found();
+    const recomendationFound = recommendationsFactory.__found();
     const createRecommendation = {
       name: recomendationFound.name,
       youtubeLink: recomendationFound.youtubeLink,
@@ -36,10 +36,11 @@ describe("Creating recomendation", () => {
     const result = recommendationService.insert(createRecommendation);
 
     expect(recommendationRepository.findByName).toBeCalled();
-    expect(result).rejects.toEqual({
+    await expect(result).rejects.toEqual({
       type: "conflict",
       message: "Recommendations names must be unique",
     });
     expect(recommendationRepository.create).not.toBeCalled();
   });
 });
+

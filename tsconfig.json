@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "esModuleInterop": true,
-    "module": "es6",
-    "moduleResolution": "node",
-    "outDir": "dist",
-    "resolveJsonModule": true
+      "target": "es2016",
+      "module": "commonjs",
+      "rootDir": "./src",
+      "outDir": "./dist",
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "resolveJsonModule": true
   },
-  "ts-node": {
-    "esm": true
-  }
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"]
 }
