@@ -43,6 +43,14 @@ export function __allRecommendations(): Recommendation[] {
 }
 
 export function __randomId(): number {
-  const { id: randomId } = __found()
+  const { id: randomId } = __found();
   return randomId;
+}
+
+export function __randomLittleNumber(): number {
+  return chance.floating({ min: 0, max: 0.69, fixed: 2 });
+}
+
+export function __randomNumber(): number {
+  return chance.floating({ min: 0.7, fixed: 1 });
 }
