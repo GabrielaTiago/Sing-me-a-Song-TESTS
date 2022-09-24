@@ -41,3 +41,8 @@ export function __allRecommendations(): Recommendation[] {
 
   return allRecommendations;
 }
+
+export function __randomId(): number {
+  const { id: randomId } = __found()
+  return randomId;
+}
