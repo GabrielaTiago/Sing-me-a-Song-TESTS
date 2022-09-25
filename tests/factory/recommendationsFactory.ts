@@ -26,7 +26,7 @@ export function __found(): Recommendation {
       domain: "www.youtube.com",
       path: `watch?v=${path}`,
     }),
-    score: chance.integer({ min: 0, max: 1000 }),
+    score: chance.integer({ min: -5, max: 100000 }),
   };
 }
 
@@ -53,4 +53,8 @@ export function __randomLittleNumber(): number {
 
 export function __randomNumber(): number {
   return chance.floating({ min: 0.7, fixed: 1 });
+}
+
+export function __negativeScore(): number {
+  return chance.integer({ min: -100, max: -5 });
 }
