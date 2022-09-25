@@ -52,7 +52,7 @@ export function __randomLittleNumber(): number {
 }
 
 export function __randomNumber(): number {
-  return chance.floating({ min: 0.7, fixed: 1 });
+  return chance.floating({ min: 0.7, max: 0.99, fixed: 2 });
 }
 
 export function __negativeScore(): number {
@@ -61,4 +61,12 @@ export function __negativeScore(): number {
 
 export function __randomAmount(): number {
   return chance.integer({ min: 1, max: 1000000 });
+}
+
+export function __randomScoreGreaterThan10(): number {
+  return chance.integer({ min: 11 });
+}
+
+export function __randomScoreLessThan10(): number {
+  return chance.integer({ min: -5, max: 10 });
 }
