@@ -4,16 +4,22 @@ import { CreateRecommendationData } from "../../src/services/recommendationsServ
 
 const chance = Chance();
 
-const path = chance.string({ length: 11, alpha: true, numeric: true });
+function __createYoutubeLink() {
+  const path = chance.string({ length: 11, alpha: true, numeric: true });
+
+  const youtubeLink = chance.url({
+    protocol: "https",
+    domain: "www.youtube.com",
+    path: `watch?v=mg${path}`,
+  });
+
+  return youtubeLink;
+}
 
 export function __create(): CreateRecommendationData {
   return {
     name: chance.name(),
-    youtubeLink: chance.url({
-      protocol: "https",
-      domain: "www.youtube.com",
-      path: `watch?v=mg${path}`,
-    }),
+    youtubeLink: __createYoutubeLink()
   };
 }
 
@@ -27,29 +33,22 @@ export function __wrongRecommendationEmpty(): CreateRecommendationData {
 export function __wrongNameNumber() {
   return {
     name: chance.integer(),
-    youtubeLink: chance.url({
-      protocol: "https",
-      domain: "www.youtube.com",
-      path: `watch?v=${path}`,
-    }),
+    youtubeLink: __createYoutubeLink()
   };
 }
 
-export function __wrongLink() {
+export function __wrongLink(): CreateRecommendationData {
   return {
     name: chance.name(),
     youtubeLink: chance.url(),
   };
 }
+
 export function __found(): Recommendation {
   return {
     id: chance.integer({ min: 1, max: 10000000000 }),
     name: chance.name(),
-    youtubeLink: chance.url({
-      protocol: "https",
-      domain: "www.youtube.com",
-      path: `watch?v=${path}`,
-    }),
+    youtubeLink: __createYoutubeLink(),
     score: chance.integer({ min: -5, max: 1000000 }),
   };
 }
