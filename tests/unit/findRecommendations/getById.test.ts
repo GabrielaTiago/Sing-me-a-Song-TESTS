@@ -28,7 +28,6 @@ describe("Get recommendations by id", () => {
 
   it("Should not return a recommendation and throw the error 'not found'", async () => {
     const randomId: number = recommendationsFactory.__randomId();
-    console.log(randomId);
 
     jest.spyOn(recommendationRepository, "find").mockResolvedValueOnce(null);
 
