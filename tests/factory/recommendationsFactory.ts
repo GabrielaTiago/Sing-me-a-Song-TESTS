@@ -10,7 +10,7 @@ function __createYoutubeLink() {
   const youtubeLink = chance.url({
     protocol: "https",
     domain: "www.youtube.com",
-    path: `watch?v=mg${path}`,
+    path: `watch?v=${path}`,
   });
 
   return youtubeLink;
@@ -19,7 +19,7 @@ function __createYoutubeLink() {
 export function __create(): CreateRecommendationData {
   return {
     name: chance.name(),
-    youtubeLink: __createYoutubeLink()
+    youtubeLink: __createYoutubeLink(),
   };
 }
 
@@ -33,7 +33,7 @@ export function __wrongRecommendationEmpty(): CreateRecommendationData {
 export function __wrongNameNumber() {
   return {
     name: chance.integer(),
-    youtubeLink: __createYoutubeLink()
+    youtubeLink: __createYoutubeLink(),
   };
 }
 
@@ -56,9 +56,9 @@ export function __found(): Recommendation {
 export function __allRecommendations(): Recommendation[] {
   const numOfRecommendations: number = chance.integer({ min: 1, max: 50 });
   const allRecommendations: Recommendation[] = [];
-  const recommendation: Recommendation = __found();
 
   for (let i = 0; i < numOfRecommendations; i++) {
+    const recommendation: Recommendation = __found();
     allRecommendations.push(recommendation);
   }
 
