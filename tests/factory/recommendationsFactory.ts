@@ -17,6 +17,30 @@ export function __create(): CreateRecommendationData {
   };
 }
 
+export function __wrongRecommendationEmpty(): CreateRecommendationData {
+  return {
+    name: "",
+    youtubeLink: "",
+  };
+}
+
+export function __wrongNameNumber() {
+  return {
+    name: chance.integer(),
+    youtubeLink: chance.url({
+      protocol: "https",
+      domain: "www.youtube.com",
+      path: `watch?v=${path}`,
+    }),
+  };
+}
+
+export function __wrongLink() {
+  return {
+    name: chance.name(),
+    youtubeLink: chance.url(),
+  };
+}
 export function __found(): Recommendation {
   return {
     id: chance.integer({ min: 1, max: 10000000000 }),
