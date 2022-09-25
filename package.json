@@ -6,7 +6,7 @@
     "build": "tsc",
     "dev": "nodemon ./src/server.ts",
     "start": "node ./dist/src/server.js",
-    "test:unit": "dotenv -e .env.test jest -- -i --coverage  --detectOpenHandles --verbose --testPathPattern=tests/unit"
+    "test:unit": "dotenv -e .env.test jest -- -i --coverage  --detectOpenHandles --testPathPattern=tests/unit"
   },
   "keywords": [],
   "author": "",
