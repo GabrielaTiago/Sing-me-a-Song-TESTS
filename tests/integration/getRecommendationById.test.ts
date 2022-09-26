@@ -27,7 +27,7 @@ describe("[GET /recommendations/:id], Tests to show a specific recommendation fi
     expect(result.body).toBeInstanceOf(Object);
   });
 
-  it("Should return an empty object when an inavalid 'id' is given, returnig 404", async () => {
+  it("Should return an empty object when an invalid 'id' is given, returnig 404", async () => {
     const id: number = recommendationsFactory.__randomId();
     const noneRecommendation: {} = {};
 

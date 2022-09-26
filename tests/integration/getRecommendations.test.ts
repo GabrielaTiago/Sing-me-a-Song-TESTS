@@ -23,7 +23,7 @@ describe("[GET /recommendations/], Tests for show the recommendations", () => {
     expect(result.status).toEqual(200);
     expect(result.body).not.toBeFalsy();
     expect(result.body).toBeInstanceOf(Array);
-    expect(result.body).toHaveLength(sizeOfBody);
+    expect(result.body.length).toBeLessThanOrEqual(sizeOfBody);
   });
 
   it("Should get a empty array when no recommendation is available", async () => {

@@ -83,7 +83,7 @@ export function __negativeScore(): number {
 }
 
 export function __randomAmount(): number {
-  return chance.integer({ min: 1, max: 1000000 });
+  return chance.integer({ min: 1, max: 1000 });
 }
 
 export function __randomScoreGreaterThan10(): number {
@@ -92,4 +92,8 @@ export function __randomScoreGreaterThan10(): number {
 
 export function __randomScoreLessThan10(): number {
   return chance.integer({ min: -5, max: 10 });
+}
+
+export function __invalidAmout(): string {
+  return chance.string({ length: 8 });
 }
