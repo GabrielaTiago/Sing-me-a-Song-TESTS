@@ -33,3 +33,17 @@ export async function createNewRecommendation(): Promise<Recommendation> {
 
   return recommendation;
 }
+
+export async function deleteRecommendation(
+  id: number
+): Promise<Recommendation | null> {
+  const deleted = await prisma.recommendation.delete({
+    where: { id },
+  });
+
+  const response = await prisma.recommendation.findFirst({
+    where: { id },
+  });
+
+  return response;
+}
