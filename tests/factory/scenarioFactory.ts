@@ -1,7 +1,7 @@
 import { Recommendation } from "@prisma/client";
 import { prisma } from "../../src/database/database";
 import { recommendationRepository } from "../../src/repositories/recommendationRepository";
-import { __allRecommendations } from "./recommendationsFactory";
+import { __allRecommendations, __create } from "./recommendationsFactory";
 
 export async function deleteAllData(): Promise<void> {
   await prisma.$transaction([
@@ -24,4 +24,12 @@ export async function insertRecommendationsInDatabase(): Promise<
     await recommendationRepository.findAll();
 
   return allrecommendations;
+}
+
+export async function createNewRecommendation(): Promise<Recommendation> {
+  const recommendation: Recommendation = await prisma.recommendation.create({
+    data: __create(),
+  });
+
+  return recommendation;
 }

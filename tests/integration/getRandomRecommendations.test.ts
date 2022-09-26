@@ -24,13 +24,12 @@ describe("[GET /recommendations/random], Tests for show a random recommendation"
     expect(result.body).toBeInstanceOf(Object);
   });
 
-  it("Should get an empty object when no recommendation is found", async () => {
+  it("Should return an empty object when no recommendation is found, returnig 404", async () => {
     const noneRecommendation: {} = {};
 
     const result = await server.get("/recommendations/random");
 
     expect(result.status).toEqual(404);
     expect(result.body).toEqual(noneRecommendation);
-    expect(result.body).toBeNull();
   });
 });
