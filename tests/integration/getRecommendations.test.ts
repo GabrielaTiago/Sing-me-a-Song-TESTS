@@ -27,12 +27,12 @@ describe("[GET /recommendations/], Tests for show the recommendations", () => {
   });
 
   it("Should get a empty array when no recommendation is available", async () => {
-    const noneRecommedation: [] = [];
+    const noneRecommendation: [] = [];
     const sizeOfBody: number = 0;
     const result = await server.get("/recommendations/");
 
     expect(result.status).toEqual(200);
-    expect(result.body).toEqual(noneRecommedation);
+    expect(result.body).toEqual(noneRecommendation);
     expect(result.body).toHaveLength(sizeOfBody);
   });
 });
