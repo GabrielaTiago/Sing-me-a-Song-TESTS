@@ -9,6 +9,10 @@ beforeEach(() => {
   jest.resetAllMocks();
 });
 
+afterEach(() => {
+  jest.spyOn(global.Math, "random").mockRestore();
+});
+
 describe("Get random recommendation", () => {
   it("Should get a random recommendation to score greater than 10", async () => {
     const recommendations: Recommendation[] = [
@@ -31,7 +35,7 @@ describe("Get random recommendation", () => {
 
     jest
       .spyOn(recommendationRepository, "findAll")
-      .mockResolvedValueOnce(recommendations);
+      .mockResolvedValue(recommendations);
 
     const randomRecommendation: Promise<Recommendation> =
       recommendationService.getRandom();

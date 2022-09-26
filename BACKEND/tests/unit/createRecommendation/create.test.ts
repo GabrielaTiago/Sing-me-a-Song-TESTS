@@ -43,4 +43,3 @@ describe("Creating recomendation", () => {
     expect(recommendationRepository.create).not.toBeCalled();
   });
 });
-
