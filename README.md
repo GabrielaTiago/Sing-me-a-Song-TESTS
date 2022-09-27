@@ -192,7 +192,7 @@ This project was inicialized with [Create React App](<(https://github.com/facebo
 First of all, clone this project
 
 ```
-    https://github.com/GabrielaTiago/Sing-me-a-Song---TESTS
+    https://github.com/GabrielaTiago/Sing-me-a-Song-TESTS.git
 ```
 
 Then, go to the project directory
@@ -332,7 +332,7 @@ $~$
 
 ### :books: Lessons Learned
 
-- Use of tests framworks : Jest and Cypress
+- Use of tests frameworks : Jest and Cypress
 - Unit tests
 - Integration tests
 - E2E tests
