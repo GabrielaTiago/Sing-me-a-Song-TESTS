@@ -14,14 +14,15 @@ describe("GET the recommendations", () => {
   });
 
   it("Should get the last 10 recommendations", () => {
-    cy.visit("/");
     const numberOfRecommendations = chance.integer({ min: 1, max: 15 });
     const allRecommendations = [];
+
     for (let i = 0; i < numberOfRecommendations; i++) {
       const recommendation = __input();
       allRecommendations.push(recommendation);
       cy.createRecommendation(recommendation);
     }
+    cy.visit("/");
 
     cy.intercept("GET", "/recommendations").as("getRecommendations");
 
@@ -29,5 +30,9 @@ describe("GET the recommendations", () => {
       "have.length.of.at.most",
       numberOfRecommendations
     );
+
+    allRecommendations.forEach((item) => {
+      cy.contains(item.name).should("be.visible");
+    });
   });
 });

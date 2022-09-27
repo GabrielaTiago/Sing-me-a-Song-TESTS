@@ -7,24 +7,22 @@ beforeEach(async () => {
   await cy.resetDatabase();
 });
 
-describe("GET the random recommendations", () => {
-  it("Should return a message when was no recommendations", () => {
+describe("GET the random recommendation", () => {
+  it("Should return a message when has no recommendations", () => {
     cy.visit("/random");
     cy.contains("Loading...");
   });
 
   it("Should get a random recommendation", () => {
     const recommendation = __input();
+    cy.createRecommendation(recommendation);
 
     cy.visit("/random");
-    cy.createRecommentation(recommendation);
 
     cy.get("[data-cy = 'random']").click();
     cy.intercept("GET", "/recommendations").as("getRecommendations");
 
-    cy.get("[data-cy = 'recommendation']").should(
-      "have.length.of.at.most",
-      1
-    );
+    cy.get("[data-cy = 'recommendation']").should("have.length.of.at.most", 1);
+    cy.contains(recommendation.name).should("be.visible");
   });
 });
