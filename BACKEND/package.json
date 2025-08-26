@@ -16,6 +16,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^9.34.0",
     "@types/chance": "^1.1.7",
     "@types/cors": "^2.8.19",
     "@types/dotenv": "^8.2.3",
@@ -29,16 +30,15 @@
     "@typescript-eslint/parser": "^8.41.0",
     "chance": "^1.1.13",
     "eslint": "^9.34.0",
-    "eslint-config-airbnb": "^19.0.4",
-    "eslint-config-airbnb-typescript": "^18.0.0",
-    "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
     "jest": "^30.0.5",
     "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
     "prisma": "^6.14.0",
     "supertest": "^7.1.4",
     "ts-jest": "^29.4.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.2"
   },
   "dependencies": {
