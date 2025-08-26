@@ -1,5 +1,5 @@
-import { Chance } from "chance";
-import { __input } from "../factory/recommendationsFactory";
+import { Chance } from 'chance';
+import { __input } from '../factory/recommendationsFactory';
 
 const chance = Chance();
 
@@ -7,13 +7,13 @@ beforeEach(async () => {
   await cy.resetDatabase();
 });
 
-describe("GET the recommendations", () => {
-  it("Should return a message when has no recommendations", () => {
-    cy.visit("/");
-    cy.contains("Loading...");
+describe('GET the recommendations', () => {
+  it('Should return a message when has no recommendations', () => {
+    cy.visit('/');
+    cy.contains('Loading...');
   });
 
-  it("Should get the top recommendations, filtered by the amount", () => {
+  it('Should get the top recommendations, filtered by the amount', () => {
     const amount = chance.integer({ min: 1, max: 15 });
     const allRecommendations = [];
 
@@ -22,18 +22,15 @@ describe("GET the recommendations", () => {
       allRecommendations.push(recommendation);
       cy.createRecommendation(recommendation);
     }
-    cy.visit("/");
+    cy.visit('/');
 
-    cy.get("[data-cy='top']")
-    cy.intercept("GET", `/recommendations/top/${amount}`).as("getRecommendations");
+    cy.get("[data-cy='top']");
+    cy.intercept('GET', `/recommendations/top/${amount}`).as('getRecommendations');
 
-    cy.get("[data-cy = 'recommendation']").should(
-      "have.length.of.at.most",
-      amount
-    );
+    cy.get("[data-cy = 'recommendation']").should('have.length.of.at.most', amount);
 
     allRecommendations.forEach((item) => {
-      cy.contains(item.name).should("be.visible");
+      cy.contains(item.name).should('be.visible');
     });
   });
 });

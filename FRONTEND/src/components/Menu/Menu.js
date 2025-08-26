@@ -1,31 +1,31 @@
-import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
-import { FaHome } from "react-icons/fa";
-import { HiTrendingUp } from "react-icons/hi";
-import { FiShuffle } from "react-icons/fi";
+import { FaHome } from 'react-icons/fa';
+import { HiTrendingUp } from 'react-icons/hi';
+import { FiShuffle } from 'react-icons/fi';
 
 export default function Menu() {
   const navigate = useNavigate();
 
   return (
     <StyledMenu>
-      <MenuItem onClick={() => navigate("/")}>
+      <MenuItem onClick={() => navigate('/')}>
         <FaHome />
         Home
       </MenuItem>
 
-      <MenuItem data-cy="top" onClick={() => navigate("/top")}>
+      <MenuItem data-cy="top" onClick={() => navigate('/top')}>
         <HiTrendingUp />
         Top
       </MenuItem>
 
-      <MenuItem data-cy="random" onClick={() => navigate("/random")}>
+      <MenuItem data-cy="random" onClick={() => navigate('/random')}>
         <FiShuffle />
         Random
       </MenuItem>
     </StyledMenu>
-  )
+  );
 }
 
 const StyledMenu = styled.div`

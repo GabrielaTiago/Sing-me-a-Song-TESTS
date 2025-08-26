@@ -17,11 +17,11 @@
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
 Cypress.Commands.add('resetDatabase', () => {
-	cy.request('POST', `${Cypress.env('apiUrl')}/e2e/reset`, {});
+  cy.request('POST', `${Cypress.env('apiUrl')}/e2e/reset`, {});
 });
 
 Cypress.Commands.add('createRecommendation', (recommendation) => {
-	cy.request('POST', `${Cypress.env('apiUrl')}/recommendations`, recommendation).then(() => {});
+  cy.request('POST', `${Cypress.env('apiUrl')}/recommendations`, recommendation).then(() => {});
 });
 
 // -- This is a dual command --

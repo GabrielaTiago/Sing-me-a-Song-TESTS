@@ -1,47 +1,26 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useState } from 'react';
+import styled from 'styled-components';
 
-import { IoReturnUpForwardOutline } from "react-icons/io5";
+import { IoReturnUpForwardOutline } from 'react-icons/io5';
 
-export default function CreateNewRecommendation({
-  onCreateNewRecommendation = () => 0,
-  disabled = false,
-}) {
-  const [name, setName] = useState("");
-  const [link, setLink] = useState("");
+export default function CreateNewRecommendation({ onCreateNewRecommendation = () => 0, disabled = false }) {
+  const [name, setName] = useState('');
+  const [link, setLink] = useState('');
 
   const handleCreateRecommendation = () => {
     onCreateNewRecommendation({
       name,
       link,
     });
-    setLink("");
-    setName("");
+    setLink('');
+    setName('');
   };
 
   return (
     <Container>
-      <Input
-        data-cy="name"
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        disabled={disabled}
-      />
-      <Input
-        data-cy="youtubeLink"
-        type="text"
-        placeholder="https://youtu.be/..."
-        value={link}
-        onChange={(e) => setLink(e.target.value)}
-        disabled={disabled}
-      />
-      <Button
-        data-cy="new"
-        onClick={() => handleCreateRecommendation()}
-        disabled={disabled}
-      >
+      <Input data-cy="name" type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} disabled={disabled} />
+      <Input data-cy="youtubeLink" type="text" placeholder="https://youtu.be/..." value={link} onChange={(e) => setLink(e.target.value)} disabled={disabled} />
+      <Button data-cy="new" onClick={() => handleCreateRecommendation()} disabled={disabled}>
         <IoReturnUpForwardOutline size="24px" color="#fff" />
       </Button>
     </Container>
@@ -61,7 +40,7 @@ const Input = styled.input`
   padding: 9px 13px;
   color: #141414;
   width: 100%;
-  font-family: "Lexend Deca", sans-serif;
+  font-family: 'Lexend Deca', sans-serif;
 
   &:disabled {
     opacity: 0.8;
