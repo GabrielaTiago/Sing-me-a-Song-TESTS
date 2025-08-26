@@ -1,0 +1,29 @@
+services:
+  sing-me-a-song-db-test:
+    image: postgres:15
+    container_name: sing-me-a-song-db-test
+    environment:
+      DATABASE_URL: ${DATABASE_URL}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      # POSTGRES_DB: ${POSTGRES_DB}
+    # ports:
+    #   - '${POSTGRES_PORT}:${POSTGRES_PORT}'
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER}']
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  sing-me-a-song-api-test:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    container_name: sing-me-a-song-api-test
+    ports:
+      - '${PORT}:${PORT}'
+    depends_on:
+      sing-me-a-song-db-test:
+        condition: service_healthy
+    env_file:
+      - .env.test
