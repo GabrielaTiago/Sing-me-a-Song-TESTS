@@ -16,13 +16,12 @@
 // -- This is a child command --
 // Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
 //
-Cypress.Commands.add("resetDatabase", () => {
-  cy.request("POST", "http://localhost:5000/e2e/reset", {});
+Cypress.Commands.add('resetDatabase', () => {
+	cy.request('POST', `${Cypress.env('apiUrl')}/e2e/reset`, {});
 });
 
-
 Cypress.Commands.add('createRecommendation', (recommendation) => {
-  cy.request('POST', 'http://localhost:5000/recommendations', recommendation).then(() => { });
+	cy.request('POST', `${Cypress.env('apiUrl')}/recommendations`, recommendation).then(() => {});
 });
 
 // -- This is a dual command --
