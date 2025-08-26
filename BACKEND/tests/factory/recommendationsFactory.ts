@@ -1,6 +1,6 @@
-import { Recommendation } from "@prisma/client";
-import { Chance } from "chance";
-import { CreateRecommendationData } from "../../src/services/recommendationsService";
+import { Recommendation } from '@prisma/client';
+import { Chance } from 'chance';
+import { CreateRecommendationData } from '../../src/services/recommendationsService';
 
 const chance = Chance();
 
@@ -8,8 +8,8 @@ function __createYoutubeLink() {
   const path = chance.string({ length: 11, alpha: true, numeric: true });
 
   const youtubeLink = chance.url({
-    protocol: "https",
-    domain: "www.youtube.com",
+    protocol: 'https',
+    domain: 'www.youtube.com',
     path: `watch?v=${path}`,
   });
 
@@ -25,8 +25,8 @@ export function __create(): CreateRecommendationData {
 
 export function __wrongRecommendationEmpty(): CreateRecommendationData {
   return {
-    name: "",
-    youtubeLink: "",
+    name: '',
+    youtubeLink: '',
   };
 }
 
@@ -46,7 +46,7 @@ export function __wrongLink(): CreateRecommendationData {
 
 export function __found(): Recommendation {
   return {
-    id: chance.integer({ min: 1, max: 10000000000 }),
+    id: chance.integer({ min: 1, max: 1000000 }),
     name: chance.name(),
     youtubeLink: __createYoutubeLink(),
     score: chance.integer({ min: -5, max: 1000000 }),

@@ -1,16 +1,7 @@
-import { NextFunction, Request, Response } from "express";
-import {
-  AppError,
-  errorTypeToStatusCode,
-  isAppError,
-} from "../utils/errorUtils";
+import { NextFunction, Request, Response } from 'express';
+import { AppError, errorTypeToStatusCode, isAppError } from '../utils/errorUtils';
 
-export function errorHandlerMiddleware(
-  err: Error | AppError,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) {
+export function errorHandlerMiddleware(err: Error | AppError, req: Request, res: Response, _next: NextFunction) {
   console.log(err);
 
   if (isAppError(err)) {

@@ -1,8 +1,8 @@
-import { Recommendation } from "@prisma/client";
-import { recommendationRepository } from "../../../src/repositories/recommendationRepository";
-import { recommendationService } from "../../../src/services/recommendationsService";
-import { notFoundError } from "../../../src/utils/errorUtils";
-import * as recommendationsFactory from "../../factory/recommendationsFactory";
+import { Recommendation } from '@prisma/client';
+import { recommendationRepository } from '../../../src/repositories/recommendationRepository';
+import { recommendationService } from '../../../src/services/recommendationsService';
+import { notFoundError } from '../../../src/utils/errorUtils';
+import * as recommendationsFactory from '../../factory/recommendationsFactory';
 
 beforeEach(() => {
   jest.clearAllMocks();
@@ -10,11 +10,11 @@ beforeEach(() => {
 });
 
 afterEach(() => {
-  jest.spyOn(global.Math, "random").mockRestore();
+  jest.spyOn(global.Math, 'random').mockRestore();
 });
 
-describe("Get random recommendation", () => {
-  it("Should get a random recommendation to score greater than 10", async () => {
+describe('Get random recommendation', () => {
+  it('Should get a random recommendation to score greater than 10', async () => {
     const recommendations: Recommendation[] = [
       {
         ...recommendationsFactory.__found(),
@@ -23,32 +23,25 @@ describe("Get random recommendation", () => {
     ];
     const filter = {
       score: 10,
-      scoreFilter: "gt",
+      scoreFilter: 'gt',
     };
     const randomNumber: number = recommendationsFactory.__randomLittleNumber();
-    const randomIndex: number = Math.floor(
-      Math.random() * recommendations.length
-    );
+    const randomIndex: number = Math.floor(Math.random() * recommendations.length);
     const comparisonScore: number = 10;
 
-    jest.spyOn(Math, "random").mockReturnValueOnce(randomNumber);
+    jest.spyOn(Math, 'random').mockReturnValueOnce(randomNumber);
 
-    jest
-      .spyOn(recommendationRepository, "findAll")
-      .mockResolvedValue(recommendations);
+    jest.spyOn(recommendationRepository, 'findAll').mockResolvedValue(recommendations);
 
-    const randomRecommendation: Promise<Recommendation> =
-      recommendationService.getRandom();
+    const randomRecommendation: Promise<Recommendation> = recommendationService.getRandom();
 
-    await expect(randomRecommendation).resolves.toEqual(
-      recommendations[randomIndex]
-    );
+    await expect(randomRecommendation).resolves.toEqual(recommendations[randomIndex]);
     expect((await randomRecommendation).score).toBeGreaterThan(comparisonScore);
     expect(randomRecommendation).toBeInstanceOf(Object);
     expect(recommendationRepository.findAll).toHaveBeenCalledWith(filter);
   });
 
-  it("Should get a random recommendation to score less than 10", async () => {
+  it('Should get a random recommendation to score less than 10', async () => {
     const recommendations: Recommendation[] = [
       {
         ...recommendationsFactory.__found(),
@@ -57,39 +50,29 @@ describe("Get random recommendation", () => {
     ];
     const filter = {
       score: 10,
-      scoreFilter: "lte",
+      scoreFilter: 'lte',
     };
     const randomNumber: number = recommendationsFactory.__randomNumber();
-    const randomIndex: number = Math.floor(
-      Math.random() * recommendations.length
-    );
+    const randomIndex: number = Math.floor(Math.random() * recommendations.length);
     const comparisonScore: number = 10;
 
-    jest.spyOn(Math, "random").mockReturnValueOnce(randomNumber);
+    jest.spyOn(Math, 'random').mockReturnValueOnce(randomNumber);
 
-    jest
-      .spyOn(recommendationRepository, "findAll")
-      .mockResolvedValueOnce(recommendations);
+    jest.spyOn(recommendationRepository, 'findAll').mockResolvedValueOnce(recommendations);
 
-    const randomRecommendation: Promise<Recommendation> =
-      recommendationService.getRandom();
+    const randomRecommendation: Promise<Recommendation> = recommendationService.getRandom();
 
-    await expect(randomRecommendation).resolves.toEqual(
-      recommendations[randomIndex]
-    );
-    expect((await randomRecommendation).score).toBeLessThanOrEqual(
-      comparisonScore
-    );
+    await expect(randomRecommendation).resolves.toEqual(recommendations[randomIndex]);
+    expect((await randomRecommendation).score).toBeLessThanOrEqual(comparisonScore);
     expect(randomRecommendation).toBeInstanceOf(Object);
     expect(recommendationRepository.findAll).toHaveBeenCalledWith(filter);
   });
 
   it("Shouln't get a random recommendation without any data registered", async () => {
-    jest.spyOn(recommendationRepository, "findAll").mockResolvedValueOnce([]);
-    jest.spyOn(recommendationRepository, "findAll").mockResolvedValueOnce([]);
+    jest.spyOn(recommendationRepository, 'findAll').mockResolvedValueOnce([]);
+    jest.spyOn(recommendationRepository, 'findAll').mockResolvedValueOnce([]);
 
-    const randomRecommendation: Promise<Recommendation> =
-      recommendationService.getRandom();
+    const randomRecommendation: Promise<Recommendation> = recommendationService.getRandom();
 
     await expect(randomRecommendation).rejects.toEqual(notFoundError());
     expect(recommendationRepository.findAll).toHaveBeenCalled();
