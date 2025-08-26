@@ -14,7 +14,9 @@
     "test:e2e": "NODE_ENV=test nodemon src/server.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "docker:test": "docker-compose -f docker-compose.test.yml --env-file .env.test up --build --abort-on-container-exit",
+    "docker:down": "docker-compose -f docker-compose.test.yml --env-file .env.test down --remove-orphans"
   },
   "keywords": [],
   "author": "",
