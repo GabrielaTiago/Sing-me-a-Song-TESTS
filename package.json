@@ -1,0 +1,8 @@
+{
+    "name": "sing-me-a-song-tests",
+    "version": "1.0.0",
+    "scripts": {
+        "docker:down": "docker-compose -f docker-compose.yml --env-file ./BACKEND/.env.test down -v --remove-orphans",
+        "test:e2e": "docker-compose -f docker-compose.yml --env-file ./BACKEND/.env.test up --build --abort-on-container-exit"
+    }
+}
