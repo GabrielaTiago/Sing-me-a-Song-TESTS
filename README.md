@@ -1,362 +1,267 @@
-<p align="center">
-<img src="https://cdn-icons-png.flaticon.com/512/2983/2983786.png" height="80px"/>
+<p align="center"><img src="https://images.emojiterra.com/twitter/v14.0/128px/1f399.png" height="80px" alt="microphone emoji"/></p>
 
-</p>
+# <p align = "center"> Sing me a Song</p>
 
-# <p align = "center"> Sing me a Song </p>
-
-#### <p align = "center">Unit, Integration, E2E</p>
+### <p align = "center">Unit, Integration, E2E</p>
 
 <p align = "center">
-   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" height="30px"/>
-   <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" height="30px"/>
-   <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" heigth="30px"/>
-   <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" heigth="30px"/>
-   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" heigth="30px"/>
-   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" heigth="30px"/>
-    <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white" heigth="30px"/>
-    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" heigth="30px"/>
-   <img src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" heigth="30px"/>
-   <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E" heigth="30px"/>
+   <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" height="30px" alt="TypeScript"/>
+   <img src="https://img.shields.io/badge/Cypress-17202C?style=for-the-badge&logo=cypress&logoColor=white" height="30px" alt="Cypress"/>
+   <img src="https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white" height="30px" alt="Jest"/>
+   <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" height="30px" alt="Express"/>
+   <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" height="30px" alt="Node"/>
+   <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" height="30px" alt="React"/>
+    <img src="https://img.shields.io/badge/Prisma-3982CE?style=for-the-badge&logo=Prisma&logoColor=white" height="30px" alt="Prisma"/>
+    <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" height="30px" alt="PostgreSQL"/>
+    <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="docker" height="30px">
+    <img src="https://img.shields.io/badge/Docker%20Compose-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="docker-compose" alt="docker-compose" height="30px" />
+    <img src="https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white" alt="swagger" height="30px">
+   <img src="https://img.shields.io/badge/eslint-3A33D1?style=for-the-badge&logo=eslint&logoColor=white" height="30px" alt="ESLint"/>
+   <img src="https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E" height="30px" alt="Prettier"/>
 </p>
 
-### :clipboard: Description
+## :clipboard: Description
 
 This project was meant to be a place where users can recommend and view music recommendations. The more recommendations a song receives, the better ranked it will be, increasing its possibility of being recommended to other users.
 
 In this way, a test system was created to ensure the functioning of the API provided, as well as the frontend application. Checking in a unitary way the services functions, all route integration and the user experience on the website running.
 
----
+## :white_check_mark: Tests
 
-### :white_check_mark: Tests
+-   Creation of a new recommendation
+-   Upvote e downvote any recommendation
+-   Get the latest recommendations
+-   Get a recommendation
+-   Get a random recommendation
+-   Get top recommendations
+-   Delete a recommendation with score less than -5
 
-- Creation of a new recommendation
-- Upvote e downvote any recommendation
-- Get the latest recommendations
-- Get a recommendation
-- Get a random recommendation
-- Get top recommendations
+## :books: API Documentation
 
----
+The API documentation, implemented with **Swagger**, can be accessed at the route [**/documentation**](http://localhost:4000/documentation)
 
-### :world_map: Routes
+![routes](assets/routes.png)
 
-```yml
-POST /recommendations
+## :rocket: Running this Project
 
-    - Route to create a new song recommendation
-    - The inputs 'name' and 'youtubeLink' must be filled in
-    - The url must bellong to the youtube (regex pattern)
+First of all, clone this project and access the folder
 
-    - body:
-        {
-            "name": "Adele - I Drink Wine",
-            "youtubeLink": "https://www.youtube.com/watch?v=LwXQ7WUh-D0"
-        }
+```bash
+    git clone https://github.com/GabrielaTiago/Sing-me-a-Song-TESTS.git
+    cd Sing-me-a-Song-TESTS
 ```
 
-```yml
-POST /recommendations/:id/upvote
+:warning: There are two ways to run this project:
 
-    - Route to upvote a recommendation
-    - id: Integer and is required
-    - params: 2
+-   **Locally**: you need to have [Node.js](https://nodejs.org/en/download), [npm](https://www.npmjs.com/) and [Postgres](https://www.postgresql.org/download/) installed on your machine.
 
+-   **With Docker**: you need to have [Docker](https://docs.docker.com/get-docker) and [Docker Compose](https://docs.docker.com/compose/install/) installed on your machine. With this option, you don't need to install these dependencies on your machine, since the project will run in containers.
+
+### :gear: Environment Variables
+
+The project uses the following environment variables:
+
+#### Backend
+
+-   `PORT`: Port where the server will run
+-   `POSTGRES_USER`: Postgres username
+-   `POSTGRES_PASSWORD`: Postgres user password
+-   `DATABASE_URL`: Postgres database connection string
+
+Copy the following content to create the **.env** and the **.env.test** files in the root of the backend project
+
+```bash
+    cd BACKEND
+    cp .env.example .env
+    cp .env.example .env.test
+    cd ..
 ```
 
-```yml
-POST /recommendations/:id/downvote
+Then, replace the values in the files with your own configuration.
 
-    - Route to downvote a recommendation
-    - params: 2 (id)
-
+```env
+    # .env
+    PORT=4000
+    POSTGRES_USER=[YourUserName]
+    POSTGRES_PASSWORD=[YourPassword]
+    DATABASE_URL="postgres://[YourUserName]:[YourPassword]@localhost:5432/singmeasong";
 ```
 
-```yml
-GET /recommendations
-
-    - Route to get the 10 more recent recommendations
-    - response:
-        [
-            {
-                "id": 1,
-                "name": "Rihanna - Love On The Brain",
-                "youtubeLink": "https://www.youtube.com/watch?v=QMP-o8WXSPM",
-                "score": 344
-            },
-            {
-                "id": 2,
-                "name": "Mark Ronson - Uptown Funk (Official Video) ft. Bruno Mars",
-                "youtubeLink": "https://www.youtube.com/watch?v=OPf0YbXqDm0",
-                "score": 430
-            },
-            {
-                "id": 3,
-                "name": "Beyoncé - Pretty Hurts",
-                "youtubeLink": "https://www.youtube.com/watch?v=LXXQLa-5n5w",
-                "score": 740
-            },
-        ]
+```env
+    # .env.test
+    PORT=4000
+    POSTGRES_USER=[YourUserName]
+    POSTGRES_PASSWORD=[YourPassword]
+    DATABASE_URL="postgres://[YourUserName]:[YourPassword]@localhost:5432/singmeasong-test";
 ```
 
-```yml
-GET /recommendations/:id
+#### Frontend
 
-    - Route to get a specific recommendation
-    - params: 1
-    - response:
-            {
-                "id": 1,
-                "name": "Rihanna - Love On The Brain",
-                "youtubeLink": "https://www.youtube.com/watch?v=QMP-o8WXSPM",
-                "score": 344
-            },
+-   `REACT_APP_BASE_URL`: Base URL for the frontend
+-   `REACT_APP_API_BASE_URL`: Base URL for the API
 
+Copy the following content to create the **.env** file in the root of the frontend project
+
+```bash
+    cd FRONTEND
+    cp .env.example .env
+    cd ..
 ```
 
-```yml
-GET /recommendations
+### :whale: Running Tests with Docker
 
-    - Route to get the 10 more recent recommendations
-    - response:
-        [
-            {
-                "id": 1,
-                "name": "Rihanna - Love On The Brain",
-                "youtubeLink": "https://www.youtube.com/watch?v=QMP-o8WXSPM",
-                "score": 344
-            },
-            {
-                "id": 2,
-                "name": "Mark Ronson - Uptown Funk (Official Video) ft. Bruno Mars",
-                "youtubeLink": "https://www.youtube.com/watch?v=OPf0YbXqDm0",
-                "score": 430
-            },
-            {
-                "id": 3,
-                "name": "Beyoncé - Pretty Hurts",
-                "youtubeLink": "https://www.youtube.com/watch?v=LXXQLa-5n5w",
-                "score": 740
-            },
-        ]
+Make sure you have Docker and Docker Compose installed on your machine.
+
+You must update the `DATABASE_URL` in the `.env.test` located in the BACKEND folder.
+
+```env
+    DATABASE_URL=postgres://[YourUserName]:[YourPassword]@sing-me-a-song-db-test:5432/singmeasong-test
 ```
 
-```yml
-GET /recommendations/random
+Then, run the following command in the root of the project:
 
-    - Route to get a random recommendation
-    - response:
-            {
-                "id": 8,
-                "name": "Jovem Dionisio - ACORDA PEDRINHO",
-                "youtubeLink": "https://www.youtube.com/watch?v=d-tx9D4a8dc",
-                "score": 253
-            }
-
+```bash
+    npm run test:e2e
 ```
 
-```yml
-GET /recommendations/top/:amount
+This command will build the Docker images and start the containers for the backend, frontend, and database. The backend will be available at `http://localhost:4000` and the frontend at `http://localhost:3000`.
 
-    - Route to get a list with ranked recommendations
-    - params: 3
-    - response:
-        [
-            {
-                "id": 3,
-                "name": "Beyoncé - Pretty Hurts",
-                "youtubeLink": "https://www.youtube.com/watch?v=LXXQLa-5n5w",
-                "score": 740
-            },
-            {
-                "id": 2,
-                "name": "Mark Ronson - Uptown Funk (Official Video) ft. Bruno Mars",
-                "youtubeLink": "https://www.youtube.com/watch?v=OPf0YbXqDm0",
-                "score": 430
-            },
-            {
-                "id": 1,
-                "name": "Rihanna - Love On The Brain",
-                "youtubeLink": "https://www.youtube.com/watch?v=QMP-o8WXSPM",
-                "score": 344
-            },
-        ]
+To run the cypress tests, open a new terminal and run the following command:
+
+```bash
+   cd FRONTEND && npx cypress open
 ```
 
-$~$
+Then, follow the steps in the [Running the cypress tests](#test_tube-running-the-cypress-tests) section.
 
-### :rocket: Runnig this Project Locally
+To run the backend unit and integration tests, open a new terminal and run the following command:
 
-This project was inicialized with [Create React App](<(https://github.com/facebook/create-react-app)>), so ensure you have so make sure you have the latest stable version of [Node.js](https://nodejs.org/en/download) e [npm](https://www.npmjs.com/) runnig locally. You will also need to install [postgres](https://www.postgresql.org/download/) to set the database.
-
-First of all, clone this project
-
-```
-    https://github.com/GabrielaTiago/Sing-me-a-Song-TESTS.git
+```bash
+   cd BACKEND
 ```
 
-Then, go to the project directory
-
-```
-    cd Sing-me-a-Song---TESTS
+```bash
+    npm run docker:test
 ```
 
-$~$
+To stop and remove the containers, run the following command in the root of the project:
 
-#### In the backend side
+```bash
+    npm run docker:down
+```
+
+### :computer: Running Tests Locally
 
 Enter the BACKEND folder
 
-```
+```bash
     cd BACKEND
 ```
 
 Run the following command to install the dependencies.
 
-```
+```bash
     npm install
 ```
 
-Create a **.env** and a **.env.test** file in the root of the project with the following data. The prisma command will automatically generate the database.
+Generate the database with the following command
 
-⚠️ **<span style="color: orange">Warnnig:</span>** The 'DATABASE*URL' must contain \_your personal postegres data* to run properly.
-
-**.env**
-
-```
-    PORT=5000
-    DATABASE_URL="postgres://[YourUserName]:[YourPassword]@[YourHostname]:5432/[YourDatabaseName]";
-```
-
-**.env.test**
-
-```
-    PORT=5000
-    DATABASE_URL="postgres://[YourUserName]:[YourPassword]@[YourHostname]:5432/[YourDatabaseName_test]";
-```
-
-Generates the database and generates its migrations
-
-```
-    npx prisma generate && npx prisma migrate dev
-```
-
-To start the server, run the command
-
-```
-    npm run start
-```
-
-To see all tests
-
-```
-    npm run test
-```
-
-End to end (E2E) tests
-
-```
-    npm run E2E
-```
-
-Integration tests
-
-```
-    npm run test:integration
-```
-
-Unit tests
-
-```
-    npm run test:unit
-```
-
-#### In the frontend side
-
-Enter the FRONTEND folder
-
-```
-    cd FRONTEND
-```
-
-Run the following command to install the dependencies.
-
-```
-    npm install
-```
-
-Create a **.env** file in the root of the project with the following data.
-
-**.env**
-
-```
-    REACT_APP_API_BASE_URL=http://localhost:5000
+```bash
+    npm run db
 ```
 
 Then build the project
 
-```
+```bash
     npm run build
 ```
 
 To start the server, run the command
 
+```bash
+    npm run start
 ```
+
+To run the backend unit and integration tests, run the command
+
+```bash
+    npm run test
+```
+
+To run unit tests only, run the command
+
+```bash
+    npm run test:unit
+```
+
+To run integration tests only, run the command
+
+```bash
+    npm run test:integration
+```
+
+Now, open a new terminal and enter the FRONTEND folder
+
+```bash
+    cd FRONTEND
+```
+
+Run the following command to install the dependencies.
+
+```bash
+    npm install
+```
+
+Then build the project
+
+```bash
+    npm run build
+```
+
+To start the server, run the command
+
+```bash
     npm run start
 ```
 
 Start the cypress
 
-```
+```bash
     npx cypress open
 ```
 
-After opening cypress :
+Then, follow the steps in the [Running the cypress tests](#test_tube-running-the-cypress-tests) section.
 
-- Click on **E2E Testing** in cypress environment;
-- Click on the option **Electron**
+### :test_tube: Running the cypress tests
 
-<p align="center">
-    <img width="600" src="./FRONTEND/src/assets/cypress.gif">
-</p>
+After opening cypress:
 
-:stop_sign: **<span style="color: red">Atention:</span>** For the tests with cypress E2E to work properly, you should keep the server on the [backend running](#in-the-backend-side), parallel to the [frontend](#in-the-frontend-side).
+-   Click on **E2E Testing** in cypress environment;
+-   Click on the option **Electron**
 
 <p align="center">
-    <img width="720" src="./FRONTEND/src/assets/commands.png">
+    <img width="600" src="./FRONTEND/src/assets/cypress.gif" alt="cypress gif">
 </p>
 
-$~$
+:stop_sign: **<span style="color: red">Attention:</span>** For the tests with cypress E2E to work properly, you should keep the server on the backend and frontend running.
 
----
+<p align="center">
+    <img width="720" src="./FRONTEND/src/assets/commands.png" alt="commands screenshot">
+</p>
 
-### :books: Lessons Learned
+## :bulb: Acknowledgements
 
-- Use of tests frameworks : Jest and Cypress
-- Unit tests
-- Integration tests
-- E2E tests
-- Mock data
-- Create scripts
-- Create commands
-- Markup language: Markdown
-  $~$
+-   [Commit Patterns](https://github.com/iuricode/padroes-de-commits)
+-   [Badges for Github](https://github.com/alexandresanlim/Badges4-README.md-Profile#-database-)
+-   [README inspiration 1](https://gist.github.com/luanalessa/7f98467a5ed62d00dcbde67d4556a1e4#file-readme-md)
+-   [README inspiration 2](https://github.com/DarlonGomes/sing-a-song-test)
 
----
+## 👩🏽‍💻 Author
 
-### :bulb: Acknowledgements
+Gabriela Tiago de Araújo
 
-- [Commit Patterns](https://github.com/iuricode/padroes-de-commits)
-- [Badges for Github](https://github.com/alexandresanlim/Badges4-README.md-Profile#-database-)
-- [README inspiration 1](https://gist.github.com/luanalessa/7f98467a5ed62d00dcbde67d4556a1e4#file-readme-md)
-- [README inspiration 2](https://github.com/DarlonGomes/sing-a-song-test)
+-   email: <gabrielatiagodearaujo@outlook.com>
+-   linkedin: <https://www.linkedin.com/in/gabrielatiago/>
+-   portfolio: <https://gabrielatiago.vercel.app>
 
-$~$
-
----
-
-### 👩‍🦱 Author
-
-- Gabriela Tiago is a fullstack web development student at Driven Education. Walking the path of knowledge in search of improving her technical skills and softskills, so she can improve the work she develops.
-
-<br>[🔝 Back to top](#-sing-me-a-song-) <br>
+<br>[🔝 Back to top](#-sing-me-a-song) <br>
